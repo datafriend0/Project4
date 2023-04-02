@@ -14,11 +14,11 @@ export class BookcabService {
   constructor(public httpClient: HttpClient) { }
   
   storeBooking():Observable<any>{
-    return this.httpClient.post("http://localhost:8080/bookings/storeBooking",booking,{responseType:'json'});
+    return this.httpClient.post("http://3.17.179.1:9090/bookings/storeBooking",booking,{responseType:'json'});
     }
   
   findAllBookings() {
-    return this.httpClient.get<any[]>('http://localhost:8080/bookings/findAllBookings');
+    return this.httpClient.get<any[]>('http://3.17.179.1:9090/bookings/findAllBookings');
   }
   
   /*findAllBookings() {

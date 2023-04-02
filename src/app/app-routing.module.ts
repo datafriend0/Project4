@@ -19,7 +19,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export class BaseUrls {
-  public static readonly BASE_HREF: string = "http://localhost:8080";
+  public static readonly BASE_HREF: string = "http://3.17.179.1:9090";
   public static readonly HOME_GROUPURL: string = "home";
   public static readonly BOOKCAB_GROUPURL: string = "bookings/storeBooking";
   public static readonly VIEWALLBOOKINGS_GROUPURL: string = "bookings/findAllBookings";
