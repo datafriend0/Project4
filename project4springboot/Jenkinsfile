@@ -1,0 +1,54 @@
+pipeline {
+	agent any
+	
+	stages{
+		stage('build') {
+			steps {
+				git 'https://github.com/tuser6794/eStoreBackend.git'
+				
+				sh "./mvnw compile"
+				
+				echo 'Building the Project with maven compile'
+				
+			}
+		}
+		
+		stage('Test') {
+			steps {
+			
+				sh "./mvnw test"
+				
+				echo 'Testing the Project with maven test'
+				
+			}
+		}
+		
+		stage('Package') {
+			steps {
+			
+				sh "./mvnw package"
+				
+				echo 'Packaging the Project with maven package'
+			
+			}
+		}
+	
+		stage('Containerize') {
+			steps{
+			    
+			    sh "./mvnw containerize"
+			    
+			    echo 'Containerizing the Project with maven package'
+			}
+		}
+	
+		stage('Deploy') {
+			steps{
+			    
+			    sh"./mvnw delpoy"
+			    
+			    echo 'Deploy the Project with maven package'
+			}
+		}
+	}
+}
