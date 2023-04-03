@@ -1,0 +1,46 @@
+version: "3.7" 
+services: 
+    database: 
+      image: mysql:8 
+      container_name: database 
+      environment: 
+          MYSQL_ROOT_PASSWORD: root 
+          MYSQL_DATABASE: database-1 
+          MYSQL_USER: willproject4
+          MYSQL_PASSWORD: Pbamweb1 
+      ports: 
+          - 3307:3306 
+      networks: 
+          - backend 
+      restart: always 
+
+spring-boot-app: 
+      build: 
+      context: ./project3springboot/ 
+      dockerfile: Dockerfile 
+      container_name: project3springboot 
+      depends_on: 
+        - database 
+      restart: always 
+      ports: 
+        - "9090:9090" 
+      networks: 
+        - backend 
+        - frontend 
+
+angular-app: 
+      build: 
+        context: ./project3angularcab/
+        dockerfile: Dockerfile 
+      #image: [imageName e.g. product-frontend-app]
+      container_name: project3angularcab
+      ports: 
+        - "8080:8080" 
+      Depends_on: project3springboot
+      networks: 
+        - frontend 
+
+      networks:
+      frontend: 
+      backend:
+
